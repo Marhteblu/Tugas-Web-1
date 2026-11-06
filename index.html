@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thoriq Nur Robbi Sopari Putra</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      color: #e8ecff;
+      /* Elemen desain: background gradasi yang bergerak */
+      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1b4f8a);
+      background-size: 400% 400%;
+      animation: gradasi 14s ease infinite;
+      overflow-x: hidden;
+    }
+    @keyframes gradasi {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .bulat {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.45;
+      z-index: 0;
+      animation: melayang 9s ease-in-out infinite;
+    }
+    .b1 { width: 280px; height: 280px; background: #7f5af0; top: -60px; left: -60px; }
+    .b2 { width: 320px; height: 320px; background: #2cb1bc; bottom: -90px; right: -70px; animation-delay: -4s; }
+    @keyframes melayang {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(30px); }
+    }
+
+    .kartu {
+      position: relative;
+      z-index: 1;
+      width: min(680px, 92vw);
+      margin: 32px 0;
+      padding: 40px 36px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      animation: muncul 0.9s ease both;
+    }
+    @keyframes muncul {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7f5af0, #2cb1bc);
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15), 0 8px 24px rgba(127, 90, 240, 0.5);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 2.1rem;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, #ffffff, #a5b4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub {
+      margin: 0 0 22px;
+      font-size: 0.9rem;
+      color: #a9b4e6;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    p {
+      line-height: 1.75;
+      color: #d6dcf5;
+      margin: 0 0 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 20px 0 26px;
+    }
+    .tags span {
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    button {
+      padding: 13px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #7f5af0, #2cb1bc);
+      box-shadow: 0 8px 22px rgba(127, 90, 240, 0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(127, 90, 240, 0.6);
+    }
+    button:active { transform: scale(0.98); }
+
+    /* galeri momen */
+    #hasil {
+      position: relative;
+      margin-top: 24px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.25);
+      display: none;
+    }
+    #hasil.tampil {
+      display: block;
+      animation: muncul 0.5s ease both;
+    }
+    #tutup {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      font-size: 1.25rem;
+      line-height: 1;
+      background: rgba(0, 0, 0, 0.55);
+      box-shadow: none;
+    }
+    #tutup:hover {
+      transform: scale(1.08);
+      background: rgba(0, 0, 0, 0.75);
+      box-shadow: none;
+    }
+    .bingkai {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1b4f8a, #7f5af0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.4rem;
+    }
+    .bingkai img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    #caption { margin-top: 12px; font-size: 1.1rem; font-weight: 600; color: #fff; }
+    #waktu   { margin-top: 4px; font-size: 0.9rem; color: #a5b4ff; }
+  </style>
+</head>
+<body>
+  <div class="bulat b1"></div>
+  <div class="bulat b2"></div>
+
+  <div class="kartu">
+    <div class="avatar">⚓</div>
+
+    <!-- 1 heading -->
+    <h1>Momen bermain roblox</h1>
+    <div class="sub">Thoriq Nur Robbi Sopari Putra</div>
+
+    <!-- 3 paragraf -->
+    <p>Saya suka main Roblox karena pilihan gamenya banyak. Kadang main bareng teman, kadang juga mencoba game baru kalau lagi bosan.</p>
+    <p>Setiap game punya keseruannya sendiri, mulai dari menjelajah, menyelesaikan tantangan, sampai bermain bersama teman. Ini beberapa momen dari game Roblox yang pernah saya mainkan.</p>
+    <p>Tekan tombol di bawah untuk melihat foto-fotonya.</p>
+
+    <div class="tags">
+      <span>Roblox</span>
+      <span>Game Roblox</span>
+      <span>Mabar</span>
+    </div>
+
+    <!-- 1 tombol JavaScript -->
+    <button id="tombol" onclick="tampilkanMomen()">Liat Foto Main</button>
+
+    <div id="hasil">
+      <button id="tutup" type="button" aria-label="Tutup foto" onclick="tutupMomen()">×</button>
+      <div class="bingkai" id="bingkai"></div>
+      <div id="caption"></div>
+      <div id="waktu"></div>
+    </div>
+  </div>
+
+  <script>
+    var momen = [
+      { foto: "Image/momen1.png", caption: "Mengalahkan Boss", ikon: "🍎" },
+      { foto: "Image/momen2.png", caption: "Dapet Devil Fruit", ikon: "🌊" },
+      { foto: "Image/momen3.png", caption: "Bermain Bersama teman", ikon: "⚔️" },
+      { foto: "Image/momen4.png", caption: "Bermain Game balapan", ikon: "🏎️" },
+      
+    ];
+    var urut = 0;
+    var jam;
+
+    function perbarui() {
+      document.getElementById("waktu").textContent = new Date().toLocaleString("id-ID", {
+        dateStyle: "full",
+        timeStyle: "medium"
+      });
+    }
+
+    function tutupMomen() {
+      document.getElementById("hasil").classList.remove("tampil");
+      document.getElementById("tombol").textContent = "Liat Foto Main";
+      clearInterval(jam);
+      jam = null;
+    }
+
+    function tampilkanMomen() {
+      var m = momen[urut % momen.length];
+      var bingkai = document.getElementById("bingkai");
+      bingkai.innerHTML = "";
+
+      var img = document.createElement("img");
+      img.alt = m.caption;
+      img.onerror = function () {   /* kalau fotonya belum ada, tampilkan ikon */
+        bingkai.innerHTML = "";
+        bingkai.textContent = m.ikon;
+      };
+      img.src = m.foto;
+      bingkai.appendChild(img);
+
+      document.getElementById("caption").textContent = m.caption;
+      perbarui();
+      document.getElementById("hasil").classList.add("tampil");
+      document.getElementById("tombol").textContent = "Foto Lainnya";
+      urut++;
+
+      if (!jam) {
+        jam = setInterval(perbarui, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
